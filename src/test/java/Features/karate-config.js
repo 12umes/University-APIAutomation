@@ -1,0 +1,9 @@
+function fn() {
+
+    var config = {
+        baseUrl: 'http://127.0.0.1:4010',
+        apiKey: 'f3c84cbb-1f9a-4b87-bb5b-2d1691b24e1e'
+    };
+
+    return config;
+}

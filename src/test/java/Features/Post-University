@@ -1,0 +1,30 @@
+Feature: University API
+
+Scenario: Get university
+
+    Given url baseUrl
+    And path 'universities'
+    When method POST
+    Then status 201
+    
+    Scenario: Negative - Create university with invalid field type
+    Given path 'university'
+    And request
+    {
+      "UniversityID": "INVALID",
+      "UniversityName": "Invalid University",
+      "UniversityLocation": "India",
+      "UniversityFounded": 1937,
+      "KeyPeople": []
+    }
+    When method POST
+    Then status 400
+    
+    Scenario: Negative - Create university with missing required  data
+    Given path 'university'
+    And request
+    {
+      "UniversityName": "University Without ID"
+    }
+    When method POST
+    Then status 400

@@ -1,0 +1,25 @@
+Feature: University API
+
+Scenario: Get university
+
+    Given url baseUrl
+    And path 'universities'
+    When method GET
+    Then status 200
+    
+    Scenario: Positive - Get university by valid ID
+    Given path 'university', universityID
+    When method GET
+    Then status 200
+    And match response.UniversityID == universityID
+    And match response.UniversityName == '#string'
+   
+   Scenario: Negative - Get university with non-existing ID
+    Given path 'university', 999999
+    When method GET
+    Then status 404
+
+Scenario: Negative - Get university with invalid ID format
+    Given path 'university', 'abc'
+    When method GET
+    Then status 400

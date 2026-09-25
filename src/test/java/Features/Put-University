@@ -1,0 +1,26 @@
+Feature: Update University
+
+Background:
+    * url baseUrl
+    * header api_key = apiKey
+    * header Content-Type = 'application/json'
+    * header Accept = 'application/json'
+
+Scenario: Positive - Update an existing university
+    Given path 'university', universityID
+    And request
+    {
+      "UniversityID": 978,
+      "UniversityName": "University of Toronto Updated",
+      "UniversityLocation": "Toronto, Ontario, Canada",
+      [
+        {
+          "name": "John Smith",
+          "age": 46,
+          "title": "President"
+        }
+      ]
+    }
+    When method PUT
+    Then status 201
+      

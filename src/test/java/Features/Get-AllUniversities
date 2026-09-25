@@ -1,0 +1,8 @@
+Feature: Get ALL University API
+
+Scenario: Get university
+
+    Given url baseUrl
+    And path 'universities'
+    When method POST
+    Then status 200
